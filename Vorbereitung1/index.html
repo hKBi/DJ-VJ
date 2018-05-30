@@ -6,7 +6,7 @@
     <h1>Hello</h1>
     <main>
         <input id="clickMe" type="button" value="clickme" onclick="CrossfadeSample.toggle();" />
-        <input type="range"  value=1 onchange="CrossfadeSample.crossfade();"/>
+        <input type="range"  min="0" max="10" oninput="CrossfadeSample.crossfade(this.value);" onchange="CrossfadeSample.crossfade(this.value);"/>
   </main>
     <script src="./js/crossfader.js"></script>
 </body>

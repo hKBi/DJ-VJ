@@ -1,5 +1,5 @@
 
-
+window.onload = loadSoundObj;
 var CrossfadeSample = {playing:false};
 var context = new AudioContext();
 

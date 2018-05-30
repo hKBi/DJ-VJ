@@ -1,3 +1,6 @@
+
+
+  
 window.onload = init;
 var context;
 var bufferLoader;
@@ -32,7 +35,7 @@ CrossfadeSample.play = function() {
   // Create two sources.
   
   // Mute the second source.
-  this.ctl1.gainNode.gain.value = 0;
+  //this.ctl1.gainNode.gain.value = 0;
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
   if (!this.ctl1.source.start) {
