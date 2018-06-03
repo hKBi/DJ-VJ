@@ -1,12 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>AVT Übung 01</title>
+    <meta charset="UTF-8">
+    <title>Beleg Multimedia Ton- und Bildverarbeitung</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+
 </head>
 <body>
     <h1>Hello</h1>
     <main>
+            
+            
         <input id="clickMe" type="button" value="clickme" onclick="CrossfadeSample.toggle();" />
-        <input type="range"  min="0" max="10" oninput="CrossfadeSample.crossfade(this.value);" onchange="CrossfadeSample.crossfade(this.value);"/>
+        <input type="range" min="0" max="100" value="100" oninput="CrossfadeSample.crossfade(this);"/>
+        <input type="range" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
   </main>
     <script src="./js/crossfader.js"></script>
 </body>

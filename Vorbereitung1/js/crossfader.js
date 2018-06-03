@@ -5,6 +5,8 @@ window.onload = init;
 var context;
 var bufferLoader;
 var CrossfadeSample = {playing:false};
+var VolumeSample = {};
+
 
 function init() {
   // Fix up prefixing
@@ -22,7 +24,8 @@ function init() {
     );
 
   bufferLoader.load();
-}
+
+  }
 
 function finishedLoading(bl)
 {
@@ -35,7 +38,8 @@ CrossfadeSample.play = function() {
   // Create two sources.
   
   // Mute the second source.
-  //this.ctl1.gainNode.gain.value = 0;
+  this.ctl1.gainNode.gain.value = 0;
+  
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
   if (!this.ctl1.source.start) {
@@ -51,17 +55,21 @@ CrossfadeSample.play = function() {
 function createSource(buffer) {
   var source = context.createBufferSource();
   var gainNode = context.createGain ? context.createGain() : context.createGainNode();
+  
   source.buffer = buffer;
   // Turn on looping
   source.loop = true;
   // Connect source to gain.
   source.connect(gainNode);
+  
   // Connect gain to destination.
   gainNode.connect(context.destination);
+  
 
   return {
     source: source,
-    gainNode: gainNode
+    gainNode: gainNode,
+   
   };
 }
 
@@ -74,6 +82,8 @@ CrossfadeSample.pause = function() {
     this.ctl2.source.stop(0);
   }
 };
+
+
 
 // Fades between 0 (all source 1) and 1 (all source 2)
 CrossfadeSample.crossfade = function(element) {
@@ -89,6 +99,28 @@ CrossfadeSample.toggle = function() {
   this.playing ? this.pause() : this.play();
   this.playing = !this.playing;
   
+};
+
+CrossfadeSample.changeVolume = function(element) 
+{
+  var volume = element.value;
+  var fraction = parseInt(element.value) / parseInt(element.max);
+  // Let's use an x*x curve (x-squared) since simple linear (x) does not
+  // sound as good
+  if(this.ctl2.gainNode.gain.value != 0)
+  {
+    
+  this.ctl2.gainNode.gain.value *= fraction ;
+  console.log(this.ctl2.gainNode.gain.value);
+  }
+  else
+  {
+    
+    this.ctl2.gainNode.gain.value = fraction * fraction;
+    console.log(this.ctl2.gainNode.gain.value);
+
+  }
+
 };
 
 
