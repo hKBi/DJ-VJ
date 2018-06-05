@@ -8,13 +8,39 @@
 
 </head>
 <body>
-    <h1>Hello</h1>
+   
     <main>
+        <div class="container">
+                <p><div class="control-3">
+                        <div class="play-pause" onclick="CrossfadeSample.toggle();" >
+                          <span class="button" >
+                            <i class="fa fa-play" aria-hidden="true"></i>
+                            <span class="slash">/</span>
+                            <i class="fa fa-pause" aria-hidden="true"></i>
+                            <img src="imgs/texture.jpg" alt="">
+                          </span>
+                        </div>
+                      </div></p>
+                      <div class="control-32">
+                            <div class="play-pause" onclick="CrossfadeSample.toggle2();">
+                              <span class="button">
+                                <i class="fa fa-play" aria-hidden="true"></i>
+                                <span class="slash">/</span>
+                                <i class="fa fa-pause" aria-hidden="true"></i>
+                                <img src="imgs/texture.jpg" alt="">
+                              </span>
+                            </div>
+                          </div>
+                          
+
+
+                          </div>
+                    </div>
             
-            
-        <input id="clickMe" type="button" value="clickme" onclick="CrossfadeSample.toggle();" />
-        <input type="range" min="0" max="100" value="100" oninput="CrossfadeSample.crossfade(this);"/>
-        <input type="range" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
+        
+        <input type="range" min="0" max="100" value="50" oninput="CrossfadeSample.crossfade(this);"/>
+        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
+        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
   </main>
     <script src="./js/crossfader.js"></script>
 </body>

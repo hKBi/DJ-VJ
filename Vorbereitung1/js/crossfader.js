@@ -4,7 +4,7 @@
 window.onload = init;
 var context;
 var bufferLoader;
-var CrossfadeSample = {playing:false};
+var CrossfadeSample = {playing:false, playing2:false};
 var VolumeSample = {};
 
 
@@ -16,8 +16,8 @@ function init() {
   bufferLoader = new BufferLoader(
     context,
     [
-      './cantStopThisMotherfuckerVocal.mp3',
       './NarutoInstrumental.mp3',
+      './cantStopThisMotherfuckerVocal.mp3',
     ],
     finishedLoading
     
@@ -38,15 +38,33 @@ CrossfadeSample.play = function() {
   // Create two sources.
   
   // Mute the second source.
-  this.ctl1.gainNode.gain.value = 0;
+  //this.ctl1.gainNode.gain.value = 0;
   
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
   if (!this.ctl1.source.start) {
     this.ctl1.source.noteOn(0);
-    this.ctl2.source.noteOn(0);
+    
   } else {
     this.ctl1.source.start(0);
+    
+  }
+
+  
+};
+CrossfadeSample.play2 = function() {
+  // Create two sources.
+  
+  // Mute the second source.
+  //this.ctl1.gainNode.gain.value = 0;
+  
+  //this.ctl2.gainNode.gain.value = 0;
+  // Start playback in a loop
+  if (!this.ctl2.source.start) {
+    
+    this.ctl2.source.noteOn(0);
+  } else {
+  
     this.ctl2.source.start(0);
   }
 
@@ -76,9 +94,18 @@ function createSource(buffer) {
 CrossfadeSample.pause = function() {
   if (!this.ctl1.source.stop) {
     this.ctl1.source.noteOff(0);
-    this.ctl2.source.noteOff(0);
+    
   } else {
     this.ctl1.source.stop(0);
+    
+  }
+};
+CrossfadeSample.pause2 = function() {
+  if (!this.ctl2.source.stop) {
+    
+    this.ctl2.source.noteOff(0);
+  } else {
+   
     this.ctl2.source.stop(0);
   }
 };
@@ -101,6 +128,13 @@ CrossfadeSample.toggle = function() {
   
 };
 
+CrossfadeSample.toggle2 = function() {
+  this.playing2 ? this.pause2() : this.play2();
+  this.playing2 = !this.playing2;
+  
+};
+
+
 CrossfadeSample.changeVolume = function(element) 
 {
   var volume = element.value;
@@ -118,6 +152,28 @@ CrossfadeSample.changeVolume = function(element)
     
     this.ctl2.gainNode.gain.value = fraction * fraction;
     console.log(this.ctl2.gainNode.gain.value);
+
+  }
+
+};
+
+CrossfadeSample.changeVolume2 = function(element) 
+{
+  var volume = element.value;
+  var fraction = parseInt(element.value) / parseInt(element.max);
+  // Let's use an x*x curve (x-squared) since simple linear (x) does not
+  // sound as good
+  if(this.ctl1.gainNode.gain.value != 0)
+  {
+    
+  this.ctl1.gainNode.gain.value *= fraction ;
+  console.log(this.ctl1.gainNode.gain.value);
+  }
+  else
+  {
+    
+    this.ctl1.gainNode.gain.value = fraction * fraction;
+    console.log(this.ctl1.gainNode.gain.value);
 
   }
 
