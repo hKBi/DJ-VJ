@@ -8,7 +8,17 @@
 
 </head>
 <body>
-   
+
+  <h1>Ue03</h1>
+  <p>Verbinden Sie den MIDI-Controller und loggen Sie die Daten der eingehenden MIDI-Events</p>
+
+  <h2>MIDI-Events (logged)</h2>
+  <div>
+      <textarea id="result" style="overflow-y: scroll; width: 400px; height: 100px; resize: none;">
+      </textarea>
+  </div>
+  <hr/>
+
     <main>
         <div class="container">
                 <p><div class="control-3">
@@ -31,18 +41,19 @@
                               </span>
                             </div>
                           </div>
-                          
+
 
 
                           </div>
                     </div>
-            
-        
+
+
         <input type="range" min="0" max="100" value="50" oninput="CrossfadeSample.crossfade(this);"/>
         <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
         <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
   </main>
     <script src="./js/crossfader.js"></script>
+    <script src="./js/midi.js"></script>
 </body>
 
 </html>
