@@ -73,20 +73,22 @@ CrossfadeSample.play2 = function() {
 function createSource(buffer) {
   var source = context.createBufferSource();
   var gainNode = context.createGain ? context.createGain() : context.createGainNode();
-  
+  var gainNode2 = context.createGain ? context.createGain() : context.createGainNode();
   source.buffer = buffer;
   // Turn on looping
   source.loop = true;
   // Connect source to gain.
   source.connect(gainNode);
-  
+  source.connect(gainNode2);
   // Connect gain to destination.
   gainNode.connect(context.destination);
-  
+  gainNode2.connect(context.destination);
+  gainNode2.connect(gainNode);
 
   return {
     source: source,
     gainNode: gainNode,
+    gainNode2:gainNode2,
    
   };
 }
@@ -118,6 +120,7 @@ CrossfadeSample.crossfade = function(element) {
   // Use an equal-power crossfading curve:
   var gain1 = Math.cos(x * 0.5*Math.PI);
   var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
+  
   this.ctl1.gainNode.gain.value = gain1;
   this.ctl2.gainNode.gain.value = gain2;
 };
@@ -141,17 +144,17 @@ CrossfadeSample.changeVolume = function(element)
   var fraction = parseInt(element.value) / parseInt(element.max);
   // Let's use an x*x curve (x-squared) since simple linear (x) does not
   // sound as good
-  if(this.ctl2.gainNode.gain.value != 0)
+  if(this.ctl2.gainNode2.gain.value != 0)
   {
     
-  this.ctl2.gainNode.gain.value *= fraction ;
-  console.log(this.ctl2.gainNode.gain.value);
+  this.ctl2.gainNode2.gain.value *= fraction ;
+  console.log(this.ctl2.gainNode2.gain.value);
   }
   else
   {
     
-    this.ctl2.gainNode.gain.value = fraction * fraction;
-    console.log(this.ctl2.gainNode.gain.value);
+    this.ctl2.gainNode2.gain.value = fraction * fraction;
+    console.log(this.ctl2.gainNode2.gain.value);
 
   }
 
@@ -163,17 +166,17 @@ CrossfadeSample.changeVolume2 = function(element)
   var fraction = parseInt(element.value) / parseInt(element.max);
   // Let's use an x*x curve (x-squared) since simple linear (x) does not
   // sound as good
-  if(this.ctl1.gainNode.gain.value != 0)
+  if(this.ctl1.gainNode2.gain.value != 0)
   {
     
-  this.ctl1.gainNode.gain.value *= fraction ;
-  console.log(this.ctl1.gainNode.gain.value);
+  this.ctl1.gainNode2.gain.value *= fraction ;
+  console.log(this.ctl1.gainNode2.gain.value);
   }
   else
   {
     
-    this.ctl1.gainNode.gain.value = fraction * fraction;
-    console.log(this.ctl1.gainNode.gain.value);
+    this.ctl1.gainNode2.gain.value = fraction * fraction;
+    console.log(this.ctl1.gainNode2.gain.value);
 
   }
 
