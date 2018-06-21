@@ -42,6 +42,9 @@ CrossfadeSample.play = function() {
   
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
+  this.ctl1 = createSource(bufferLoader.bufferList[0]);
+  this.ctl1.source.start(0);
+  /*
   if (!this.ctl1.source.start) {
     this.ctl1.source.noteOn(0);
     
@@ -50,7 +53,7 @@ CrossfadeSample.play = function() {
     
   }
 
-  
+  */
 };
 CrossfadeSample.play2 = function() {
   // Create two sources.
@@ -60,6 +63,9 @@ CrossfadeSample.play2 = function() {
   
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
+  this.ctl2 = createSource(bufferLoader.bufferList[1]);
+  this.ctl2.source.start(0);
+  /*
   if (!this.ctl2.source.start) {
     
     this.ctl2.source.noteOn(0);
@@ -68,7 +74,7 @@ CrossfadeSample.play2 = function() {
     this.ctl2.source.start(0);
   }
 
-  
+  */
 };
 function createSource(buffer) {
   var source = context.createBufferSource();
@@ -92,22 +98,11 @@ function createSource(buffer) {
 }
 
 CrossfadeSample.pause = function() {
-  if (!this.ctl1.source.stop) {
-    this.ctl1.source.noteOff(0);
-    
-  } else {
-    this.ctl1.source.stop(0);
-    
-  }
+  this.ctl1.source.stop(0);
+
 };
 CrossfadeSample.pause2 = function() {
-  if (!this.ctl2.source.stop) {
-    
-    this.ctl2.source.noteOff(0);
-  } else {
-   
     this.ctl2.source.stop(0);
-  }
 };
 
 
