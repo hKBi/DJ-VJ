@@ -1,6 +1,6 @@
 
 
-  
+
 window.onload = init;
 var context;
 var bufferLoader;
@@ -20,7 +20,7 @@ function init() {
       './cantStopThisMotherfuckerVocal.mp3',
     ],
     finishedLoading
-    
+
     );
 
   bufferLoader.load();
@@ -36,76 +36,76 @@ function finishedLoading(bl)
 
 CrossfadeSample.play = function() {
   // Create two sources.
-  
+
   // Mute the second source.
   //this.ctl1.gainNode.gain.value = 0;
-  
+
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
   if (!this.ctl1.source.start) {
     this.ctl1.source.noteOn(0);
-    
+
   } else {
     this.ctl1.source.start(0);
-    
+
   }
 
-  
+
 };
 CrossfadeSample.play2 = function() {
   // Create two sources.
-  
+
   // Mute the second source.
   //this.ctl1.gainNode.gain.value = 0;
-  
+
   //this.ctl2.gainNode.gain.value = 0;
   // Start playback in a loop
   if (!this.ctl2.source.start) {
-    
+
     this.ctl2.source.noteOn(0);
   } else {
-  
+
     this.ctl2.source.start(0);
   }
 
-  
+
 };
 function createSource(buffer) {
   var source = context.createBufferSource();
   var gainNode = context.createGain ? context.createGain() : context.createGainNode();
-  
+
   source.buffer = buffer;
   // Turn on looping
   source.loop = true;
   // Connect source to gain.
   source.connect(gainNode);
-  
+
   // Connect gain to destination.
   gainNode.connect(context.destination);
-  
+
 
   return {
     source: source,
     gainNode: gainNode,
-   
+
   };
 }
 
 CrossfadeSample.pause = function() {
   if (!this.ctl1.source.stop) {
     this.ctl1.source.noteOff(0);
-    
+
   } else {
     this.ctl1.source.stop(0);
-    
+
   }
 };
 CrossfadeSample.pause2 = function() {
   if (!this.ctl2.source.stop) {
-    
+
     this.ctl2.source.noteOff(0);
   } else {
-   
+
     this.ctl2.source.stop(0);
   }
 };
@@ -122,20 +122,22 @@ CrossfadeSample.crossfade = function(element) {
   this.ctl2.gainNode.gain.value = gain2;
 };
 
+
+
 CrossfadeSample.toggle = function() {
   this.playing ? this.pause() : this.play();
   this.playing = !this.playing;
-  
+
 };
 
 CrossfadeSample.toggle2 = function() {
   this.playing2 ? this.pause2() : this.play2();
   this.playing2 = !this.playing2;
-  
+
 };
 
 
-CrossfadeSample.changeVolume = function(element) 
+CrossfadeSample.changeVolume = function(element)
 {
   var volume = element.value;
   var fraction = parseInt(element.value) / parseInt(element.max);
@@ -143,13 +145,13 @@ CrossfadeSample.changeVolume = function(element)
   // sound as good
   if(this.ctl2.gainNode.gain.value != 0)
   {
-    
+
   this.ctl2.gainNode.gain.value *= fraction ;
   console.log(this.ctl2.gainNode.gain.value);
   }
   else
   {
-    
+
     this.ctl2.gainNode.gain.value = fraction * fraction;
     console.log(this.ctl2.gainNode.gain.value);
 
@@ -157,7 +159,7 @@ CrossfadeSample.changeVolume = function(element)
 
 };
 
-CrossfadeSample.changeVolume2 = function(element) 
+CrossfadeSample.changeVolume2 = function(element)
 {
   var volume = element.value;
   var fraction = parseInt(element.value) / parseInt(element.max);
@@ -165,25 +167,19 @@ CrossfadeSample.changeVolume2 = function(element)
   // sound as good
   if(this.ctl1.gainNode.gain.value != 0)
   {
-    
+
   this.ctl1.gainNode.gain.value *= fraction ;
   console.log(this.ctl1.gainNode.gain.value);
   }
   else
   {
-    
+
     this.ctl1.gainNode.gain.value = fraction * fraction;
     console.log(this.ctl1.gainNode.gain.value);
 
   }
 
 };
-
-
-
-
-
-
 
 
 //bufferLoader class

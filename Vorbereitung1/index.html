@@ -48,9 +48,9 @@
                     </div>
 
 
-        <input type="range" min="0" max="100" value="50" oninput="CrossfadeSample.crossfade(this);"/>
-        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
-        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
+        <input id="cross" type="range" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/>
+        <input id="vol1" type="range" class="vranger" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" />
+        <input id="vol2" type="range" class="vranger" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
   </main>
     <script src="./js/crossfader.js"></script>
     <script src="./js/midi.js"></script>
