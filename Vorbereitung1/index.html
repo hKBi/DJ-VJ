@@ -5,7 +5,12 @@
     <title>Beleg Multimedia Ton- und Bildverarbeitung</title>
     <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/style.css" />
-
+<style>
+video {
+  width: 30%;
+  height: 30%;
+}
+</style>
 </head>
 <body>
 
@@ -18,6 +23,15 @@
       </textarea>
   </div>
   <hr/>
+  <h3>Adaptive Streaming with HTML5</h3>
+    <video data-dashjs-player manuelplay src="./sintel.mpd" controls></video>
+    <video data-dashjs-player manuelplay src="./mandalas.mpd" controls></video>
+
+  
+
+ 
+
+  
 
     <main>
         <div class="container">
@@ -48,12 +62,14 @@
                     </div>
 
 
-        <input type="range" min="0" max="100" value="50" oninput="CrossfadeSample.crossfade(this);"/>
-        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume(this);" />
-        <input type="range" class="vranger" min="0" max="100" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
+        <input id="cross" type="range" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/>
+        <input id="vol1" type="range" class="vranger" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" />
+        <input id="vol2" type="range" class="vranger" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
   </main>
     <script src="./js/crossfader.js"></script>
     <script src="./js/midi.js"></script>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    
 </body>
 
 </html>
