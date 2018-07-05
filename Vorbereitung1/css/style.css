@@ -1,22 +1,83 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   outline: none;
 }
 
-body
-{
+body {
   font-family: Roboto, sans-serif;
-
-  background: #474553;
+  background-color: #474553;
   background: -moz-radial-gradient(center, ellipse cover, #474553 0%, #292830 100%); /* FF3.6-15 */
   background: -webkit-radial-gradient(center, ellipse cover, #474553 0%,#292830 100%); /* Chrome10-25,Safari5.1-6 */
   background: radial-gradient(ellipse at center, #474553 0%,#292830 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474553', endColorstr='#292830',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
+.jcell {
+  /*width:25%;
+  position:relative;
+  float:left;*/
+  margin: auto;
+}
+.jcell3 {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
 
+}
+.jcell4 {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  /*padding-top: 30%;*/
+  padding-top: 80px;
+  text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
+}
+
+.jtext {
+  position: absolute;
+  width: inherit;
+  color: white;
+  font-size: 1.5em;
+  margin: auto;
+
+}
+
+.jtext2 {
+  width: inherit;
+  color: white;
+  font-size: 1.5em;
+  margin: left;
+
+}
+
+.jvol2, .jvol1, .jcross {
+  width:100% !important;
+
+
+}
+.jcontainer
+{
+display: grid;
+grid-template-columns: auto auto auto;
+grid-template-rows: 100px 100px;
+grid-gap: 50px;
+padding: 50px;
+
+/*style="position:relative;float:left; padding-top:100px; width:100%"*/
+}
+.jcontainer2
+{
+display: grid;
+grid-template-columns: auto auto auto;
+grid-template-rows: 100px 100px;
+grid-gap: 50px;
+padding: 0 50px;
+text-align: center;
+
+/*style="position:relative;float:left; padding-top:100px; width:100%"*/
+}
 .container
 {
   position: relative;
@@ -46,7 +107,7 @@ div.control-1
   border-radius: 100%;
   border: 7px solid #19191b;
   border-bottom: 5px solid transparent;
-  
+
   box-shadow: 0 -1px 2px -1px rgba(255,255,255,0.2),
               inset 0 1px 2px -1px rgba(255,255,255,0.2);
 }
@@ -227,10 +288,11 @@ div.volume-control .panel img
 
 div.control-3
 {
-  position: absolute;
-  display: inline;
-  margin-top: 70px;
-  margin-left: 0px;
+  position: relative;
+  align-self: center;
+  /* display: inline;*/
+  /*margin-top: 70px;*/
+  /*margin-left: 10%;*/
 }
 
 div.control-3 div.play-pause
@@ -258,10 +320,10 @@ div.control-3 div.play-pause:before
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
-  
+
   z-index: 0;
   border: 10px solid #05d4f4;
-  border-right-color: transparent; 
+  border-right-color: transparent;
   transform: rotate(0deg);
 }
 
@@ -324,10 +386,13 @@ div.play-pause i
 
 div.control-32
 {
-  position: absolute;
+  align-self: center;
+  /*margin-left: 13%;
+/*  position: absolute;
   display: inline;
   margin-top: 200px;
-  margin-left: 0px;
+  margin-left: 0px;*/
+
 }
 
 div.control-32 div.play-pause
@@ -355,16 +420,16 @@ div.control-32 div.play-pause:before
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
-  
+
   z-index: 0;
   border: 10px solid #05d4f4;
-  border-right-color: transparent; 
+  border-right-color: transparent;
   transform: rotate(0deg);
 }
 
 div.play-pause span.button
 {
-  position: absolute;
+  position: relative;
   width: 74px;
   height: 74px;
   display: inline-block;
@@ -413,7 +478,7 @@ div.play-pause i
 }
 
 .vranger {
-  margin-top: 50px;
+  /*margin-top: 50px;
    transform: rotate(270deg);
   -moz-transform: rotate(270deg); /*do same for other browsers if required*/
 }
@@ -421,10 +486,11 @@ div.play-pause i
 
 input[type=range] {
   -webkit-appearance: none;
-  width: 20%;
-  margin-top: 200px ;
-  
-  
+  width: 50%;
+  margin-top: 100px ;
+
+
+
 }
 input[type=range]:focus {
   outline: none;

@@ -14,8 +14,8 @@ video {
 </head>
 <body>
 
-  <h1>Ue03</h1>
-  <p>Verbinden Sie den MIDI-Controller und loggen Sie die Daten der eingehenden MIDI-Events</p>
+  <h1 style="text-align:center;">Ue03</h1>
+  <p style="text-align:center;">Verbinden Sie den MIDI-Controller und loggen Sie die Daten der eingehenden MIDI-Events</p>
 
   <h2>MIDI-Events (logged)</h2>
   <div>
@@ -27,15 +27,10 @@ video {
     <video data-dashjs-player manuelplay src="./sintel.mpd" controls></video>
     <video data-dashjs-player manuelplay src="./mandalas.mpd" controls></video>
 
-  
 
- 
-
-  
-
-    <main>
-        <div class="container">
-                <p><div class="control-3">
+<main>
+        <!--div class="container">
+                    <div class="control-3">
                         <div class="play-pause" onclick="CrossfadeSample.toggle();" >
                           <span class="button" >
                             <i class="fa fa-play" aria-hidden="true"></i>
@@ -44,7 +39,7 @@ video {
                             <img src="imgs/texture.jpg" alt="">
                           </span>
                         </div>
-                      </div></p>
+                      </div>
                       <div class="control-32">
                             <div class="play-pause" onclick="CrossfadeSample.toggle2();">
                               <span class="button">
@@ -56,20 +51,74 @@ video {
                             </div>
                           </div>
 
+                          <input id="cross" type="range" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/>
+                          <input id="vol1" type="range" class="vranger" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" />
+                          <input id="vol2" type="range" class="vranger" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
+
+    </div//-->
+    <div class="textcontainer"></div>
+    <div class="jcontainer">
+      <div class="jcell4">Track 1</div>
+      <div class="jcell4"></div>
+      <div class="jcell4">Track 2</div>
+      <div class="jcell">
+        <!-- <p class="jtext2">Track 1</p> -->
+
+        <div class="control-3">
+
+            <div class="play-pause" onclick="CrossfadeSample.toggle();" >
+              <span class="button" >
+                <i class="fa fa-play" aria-hidden="true"></i>
+                <span class="slash">/</span>
+                <i class="fa fa-pause" aria-hidden="true"></i>
+                <img src="imgs/texture.jpg" alt="">
+              </span>
+            </div>
+          </div>
+      </div>
+      <div class="jcell"></div>
+      <div class="jcell">
+        <!-- <p class="jtext2">Track 2</p> -->
+        <div class="control-32">
+              <div class="play-pause" onclick="CrossfadeSample.toggle2();">
+                <span class="button">
+                  <i class="fa fa-play" aria-hidden="true"></i>
+                  <span class="slash">/</span>
+                  <i class="fa fa-pause" aria-hidden="true"></i>
+                  <img src="imgs/texture.jpg" alt="">
+                </span>
+              </div>
+            </div>
+      </div>
+      <div class="jcell2">
+        <input id="vol2" type="range" class="vranger jvol2" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" /></div>
+      <div class="jcell2"><input id="cross" type="range"  class="jcross" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/></div>
+      <div class="jcell2"><input id="vol1" type="range" class="vranger jvol1" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" /></div>
+
+    </div>
+
+    <div class="jcontainer2">
+      <div class="jcell3">
+        <span>Volume 1</span>
+      </div>
+      <div class="jcell3">
+        <span>Crossfade</span>
+      </div>
+      <div class="jcell3">
+        <span>Volume 2</span>
+      </div>
+    </div>
 
 
-                          </div>
-                    </div>
 
 
-        <input id="cross" type="range" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/>
-        <input id="vol1" type="range" class="vranger" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" />
-        <input id="vol2" type="range" class="vranger" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" />
   </main>
+
+
     <script src="./js/crossfader.js"></script>
     <script src="./js/midi.js"></script>
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-    
+
 </body>
 
 </html>
