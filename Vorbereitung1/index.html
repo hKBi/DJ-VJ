@@ -24,8 +24,17 @@ video {
   </div>
   <hr/>
   <h3>Adaptive Streaming with HTML5</h3>
-    <video data-dashjs-player manuelplay src="./sintel.mpd" controls></video>
-    <video data-dashjs-player manuelplay src="./mandalas.mpd" controls></video>
+
+    
+    <video src="./darkkermit.webm" controls loop id="kermit"></video>
+    <video src="./starwarsbackround.webm" controls loop id="starwars"></video>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/>
+    <input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/>
+    <input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/>
+    <input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/>
+   
+    
 
 
 <main>
@@ -118,6 +127,51 @@ video {
     <script src="./js/crossfader.js"></script>
     <script src="./js/midi.js"></script>
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <script src="./js/seriously.js"></script>
+	  <script src="./js/effects/seriously.vignette.js"></script>
+	  <script src="./js/effects/seriously.hue-saturation.js"></script>
+    <script src="./js/effects/seriously.split.js"></script>
+    <script src="./js/effects/seriously.blend.js"></script>
+    <script src="./js/effects/seriously.color.js"></script>
+    <script>
+      //main code goes here
+      // declare our variables
+var seriously, // the main object that holds the entire composition
+	starwars,
+  kermit,// a wrapper object for our source image
+  vignette,
+  blend,
+  hue_saturation, 
+	target; // a wrapper object for our target canvas
+
+seriously = new Seriously();
+
+// Create a source object by passing a CSS query string.
+starwars = seriously.source('#starwars');
+kermit = seriously.source('#kermit');
+// now do the same for the target canvas
+target = seriously.target('#canvas');
+// effect setup and options
+vignette = seriously.effect('vignette');
+vignette.amount = '#vignette-range';
+blend = seriously.effect('blend');
+blend.opacity = '#opacity-range';
+
+hue_saturation = seriously.effect('hue-saturation');
+hue_saturation.hue = '#hue-range';
+hue_saturation.saturation = '#saturation-range'
+
+
+
+// connect sources
+hue_saturation.source = kermit
+blend.bottom=starwars;
+vignette.source = blend;
+blend.top=hue_saturation;
+target.source = vignette;
+
+seriously.go();
+    </script>
 
 </body>
 
