@@ -7,9 +7,10 @@
 <link rel="stylesheet" href="css/style.css" />
 <style>
 video {
-  width: 30%;
-  height: 30%;
+  width: 450px;
+  height: 200px;
 }
+
 </style>
 </head>
 <body>
@@ -26,8 +27,8 @@ video {
   <h3>Adaptive Streaming with HTML5</h3>
 
 
-    <video src="./darkkermit.webm" controls loop id="kermit"></video>
     <video src="./starwarsbackround.webm" controls loop id="starwars"></video>
+    <video src="./darkkermit.webm" controls loop id="kermit"></video>
     <canvas id="canvas" width="640" height="480"></canvas>
     <div class="jcell5">
     <input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/></div>
@@ -35,10 +36,18 @@ video {
     <input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/></div>
     <div class="jcell5"><div class="jcell5">Crossfade</div>
     <input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">Farbton</div>
+    <div class="jcell5"><div class="jcell5">Farbton Video2</div>
     <input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">Sättigung</div></div>
+    <div class="jcell5"><div class="jcell5">Sättigung Video2</div></div>
 
+    <input type="range" id="segment-range" min="0" max="20" step="1" value="0"/></div>
+    <div class="jcell5"><div class="jcell5">kaleidoscope video2</div></div>
+
+   
+    
+
+
+    
 
 
 
@@ -137,7 +146,8 @@ video {
 	  <script src="./js/effects/seriously.hue-saturation.js"></script>
     <script src="./js/effects/seriously.split.js"></script>
     <script src="./js/effects/seriously.blend.js"></script>
-    <script src="./js/effects/seriously.color.js"></script>
+    <script src="./js/effects/seriously.kaleidoscope.js"></script>
+   
     <script>
       //main code goes here
       // declare our variables
@@ -147,6 +157,7 @@ var seriously, // the main object that holds the entire composition
   vignette,
   blend,
   hue_saturation,
+  kaleidoscope,
 	target; // a wrapper object for our target canvas
 
 seriously = new Seriously();
@@ -164,12 +175,15 @@ blend.opacity = '#opacity-range';
 
 hue_saturation = seriously.effect('hue-saturation');
 hue_saturation.hue = '#hue-range';
-hue_saturation.saturation = '#saturation-range'
+hue_saturation.saturation = '#saturation-range';
 
+kaleidoscope = seriously.effect('kaleidoscope');
+kaleidoscope.segments = '#segment-range';
 
 
 // connect sources
-hue_saturation.source = kermit
+kaleidoscope.source = kermit;
+hue_saturation.source = kaleidoscope;
 blend.bottom=starwars;
 vignette.source = blend;
 blend.top=hue_saturation;
