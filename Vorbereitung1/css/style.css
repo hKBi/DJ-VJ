@@ -34,14 +34,6 @@ body {
   padding-top: 80px;
   text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
 }
-.jcell5 {
-  color: white;
-  font-size: 1.2em;
-  text-align: center;
-  /*padding-top: 30%;*/
-  /*padding-top: 80px;*/
-  text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
-}
 
 .jtext {
   position: absolute;
