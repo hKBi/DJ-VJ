@@ -25,16 +25,21 @@ video {
   <hr/>
   <h3>Adaptive Streaming with HTML5</h3>
 
-    
+
     <video src="./darkkermit.webm" controls loop id="kermit"></video>
     <video src="./starwarsbackround.webm" controls loop id="starwars"></video>
     <canvas id="canvas" width="640" height="480"></canvas>
-    <input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/>
-    <input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/>
-    <input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/>
-    <input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/>
-   
-    
+    <div class="jcell5">
+    <input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/></div>
+    <div class="jcell5"><div class="jcell5">Vignette</div>
+    <input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/></div>
+    <div class="jcell5"><div class="jcell5">Crossfade</div>
+    <input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/></div>
+    <div class="jcell5"><div class="jcell5">Farbton</div>
+    <input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/></div>
+    <div class="jcell5"><div class="jcell5">Sättigung</div></div>
+
+
 
 
 <main>
@@ -141,7 +146,7 @@ var seriously, // the main object that holds the entire composition
   kermit,// a wrapper object for our source image
   vignette,
   blend,
-  hue_saturation, 
+  hue_saturation,
 	target; // a wrapper object for our target canvas
 
 seriously = new Seriously();
