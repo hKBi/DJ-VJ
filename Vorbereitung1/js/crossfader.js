@@ -167,20 +167,7 @@ CrossfadeSample.changeVolume = function(element)
   var fraction = parseInt(element.value) / parseInt(element.max);
   // Let's use an x*x curve (x-squared) since simple linear (x) does not
   // sound as good
-  if(this.ctl2.gainNode2.gain.value != 0)
-  {
-    
-  this.ctl2.gainNode2.gain.value *= fraction ;
-  console.log(this.ctl2.gainNode2.gain.value);
-  }
-  else
-  {
-    
-    this.ctl2.gainNode2.gain.value = fraction * fraction;
-    console.log(this.ctl2.gainNode2.gain.value);
-
-  }
-
+  this.ctl2.gainNode2.gain.value = fraction * fraction ;
 };
 
 CrossfadeSample.muteVolume2 = function(element){
@@ -201,25 +188,20 @@ CrossfadeSample.changeVolume2 = function(element)
   var fraction = parseInt(element.value) / parseInt(element.max);
   // Let's use an x*x curve (x-squared) since simple linear (x) does not
   // sound as good
-  if(this.ctl1.gainNode2.gain.value != 0)
-  {
-    
-  this.ctl1.gainNode2.gain.value *= fraction ;
-  console.log(this.ctl1.gainNode2.gain.value);
-  }
-  else
-  {
-    
-    this.ctl1.gainNode2.gain.value = fraction * fraction;
-    console.log(this.ctl1.gainNode2.gain.value);
-
-  }
+  this.ctl1.gainNode2.gain.value = fraction * fraction ;
 
 };
 
 
+CrossfadeSample.changeSpeed1 = function(element){
+  var speed = element.value;
+  this.ctl2.source.playbackRate.value = speed;
+}
 
-
+CrossfadeSample.changeSpeed2 = function(element){
+  var speed = element.value;
+  this.ctl1.source.playbackRate.value = speed;
+}
 
 
 //bufferLoader class

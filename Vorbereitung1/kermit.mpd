@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:mpeg:DASH:schema:MPD:2011"
+  xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011"
+  type="static"
+  mediaPresentationDuration="PT0.55S"
+  minBufferTime="PT1S"
+  profiles="urn:webm:dash:profile:webm-on-demand:2012">
+<Period id="0" start="PT0S" duration="PT0.55S" >
+<AdaptationSet id="0" mimeType="video/webm" codecs="vp9" width="640" height="360" bitstreamSwitching="true" subsegmentAlignment="true" subsegmentStartsWithSAP="0">
+<Representation id="0" bandwidth="0">
+<BaseURL>video_1280x720_500k.webm</BaseURL>
+<SegmentBase
+  indexRange="23061-23089">
+<Initialization
+  range="0-655" />
+</SegmentBase>
+</Representation>
+</AdaptationSet>
+</Period>
+</MPD>

@@ -113,9 +113,9 @@ video {
             </div>
       </div>
       <div class="jcell2">
-        <input id="vol2" type="range" class="vranger jvol2" min="0" max="123" value="100" onchange="CrossfadeSample.changeVolume2(this);" /></div>
+        <input id="vol2" type="range" class="vranger jvol2" min="0" max="123" value="100" oninput="CrossfadeSample.changeVolume2(this);" /></div>
       <div class="jcell2"><input id="cross" type="range"  class="jcross" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/></div>
-      <div class="jcell2"><input id="vol1" type="range" class="vranger jvol1" min="0" max="127" value="100" onchange="CrossfadeSample.changeVolume(this);" /></div>
+      <div class="jcell2"><input id="vol1" type="range" class="vranger jvol1" min="0" max="127" value="100" oninput="CrossfadeSample.changeVolume(this);" /></div>
 
     </div>
 
@@ -128,6 +128,24 @@ video {
       </div>
       <div class="jcell3">
         <span>Volume 2 <input type="checkbox" onchange="CrossfadeSample.muteVolume2(this);"></span>
+      </div>
+    </div>
+
+    <div class="jcontainer">
+      <div class="jcell2">
+        <input id="speed2" type="range" class="vranger jvol2" min="0.25" max="3" step="0.05" value="1" oninput="CrossfadeSample.changeSpeed2(this);" /></div>
+      <div class="jcell2"><span></span></div>
+      <div class="jcell2"><input id="speed1" type="range" class="vranger jvol1" min="0.25" max="3" step="0.05" value="1" oninput="CrossfadeSample.changeSpeed1(this);" /></div>
+      </div>
+
+    <div class="jcontainer2">
+      <div class="jcell3">
+        <span>Speed 1</span>
+      </div>
+      <div class="jcell3">
+      </div>
+      <div class="jcell3">
+        <span>Speed 2</span>
       </div>
     </div>
 
