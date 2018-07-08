@@ -107,17 +107,35 @@ CrossfadeSample.pause2 = function() {
     this.ctl2.source.stop(0);
 };
 
-
+CrossfadeSample.muteCrossfade = function(element) {
+  if(element.checked){
+    useCrossfade = false;
+    this.ctl1.gainNode.gain.value = 0;
+    this.ctl2.gainNode.gain.value = 0;
+  }
+  else {
+    useCrossfade = true;
+    crossfader = document.getElementById("cross");
+    var x = parseInt(crossfader.value) / parseInt(crossfader.max);
+    var gain1 = Math.cos(x * 0.5*Math.PI);
+    var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
+    
+    this.ctl1.gainNode.gain.value = gain1;
+    this.ctl2.gainNode.gain.value = gain2;
+  }
+}
 
 // Fades between 0 (all source 1) and 1 (all source 2)
 CrossfadeSample.crossfade = function(element) {
-  var x = parseInt(element.value) / parseInt(element.max);
-  // Use an equal-power crossfading curve:
-  var gain1 = Math.cos(x * 0.5*Math.PI);
-  var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
+  if(useCrossfade){
+    var x = parseInt(element.value) / parseInt(element.max);
+    // Use an equal-power crossfading curve:
+    var gain1 = Math.cos(x * 0.5*Math.PI);
+    var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
   
-  this.ctl1.gainNode.gain.value = gain1;
-  this.ctl2.gainNode.gain.value = gain2;
+    this.ctl1.gainNode.gain.value = gain1;
+    this.ctl2.gainNode.gain.value = gain2;
+  }
 };
 
 CrossfadeSample.toggle = function() {
@@ -132,6 +150,16 @@ CrossfadeSample.toggle2 = function() {
   
 };
 
+CrossfadeSample.muteVolume1 = function(element){
+  if(element.checked){
+    this.ctl1.gainNode2.gain.value = 0;
+  }
+  else {
+    vol = document.getElementById("vol2");
+    var fraction = parseInt(vol.value) / parseInt(vol.max);
+    this.ctl1.gainNode2.gain.value = fraction * fraction;
+  }
+}
 
 CrossfadeSample.changeVolume = function(element) 
 {
@@ -155,6 +183,18 @@ CrossfadeSample.changeVolume = function(element)
 
 };
 
+CrossfadeSample.muteVolume2 = function(element){
+  var state = element.checked;
+  if(state){
+    this.ctl2.gainNode2.gain.value = 0;
+  }
+  else {
+    vol = document.getElementById("vol1");
+    var fraction = parseInt(vol.value) / parseInt(vol.max);
+    this.ctl2.gainNode2.gain.value = fraction * fraction;
+  }
+}
+
 CrossfadeSample.changeVolume2 = function(element) 
 {
   var volume = element.value;
@@ -176,8 +216,6 @@ CrossfadeSample.changeVolume2 = function(element)
   }
 
 };
-
-
 
 
 
