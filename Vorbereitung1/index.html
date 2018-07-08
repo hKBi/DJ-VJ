@@ -26,38 +26,27 @@ video {
   <hr/>
   <h3>Adaptive Streaming with HTML5</h3>
 
-
-    <video src="./starwarsbackround.webm" controls loop id="starwars"></video>
-    <video src="./darkkermit.webm" controls loop id="kermit"></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <div class="jcell5">
-    <input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/></div>
-    <div class="jcell5"><div class="jcell5">Vignette</div>
-    <input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/></div>
-    <div class="jcell5"><div class="jcell5">Crossfade</div>
-    <input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">Farbton Video2</div>
-    <input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">Sättigung Video2</div>
-    <input type="range" id="contrast-range" min="0" max="1" step="0.0001" value="1"/></div>
-    <div class="jcell5"><div class="jcell5">contrast Video2</div>
-    <input type="range" id="brightness-range" min="0" max="1" step="0.0001" value="1"/></div>
-    <div class="jcell5"><div class="jcell5">helligkeit Video2</div>
-    <input type="range" id="highlight-range" min="0" max="1" step="0.0001" value="1"/></div>
-    <div class="jcell5"><div class="jcell5">highlight Video2</div>
-    <input type="range" id="shadow-range" min="0" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">schatten Video2</div>
-    <input type="range" id="tvglitch-range" min="0" max="1" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">tvglitch Video2</div>
-    
-    <input type="range" id="segment-range" min="0" max="20" step="0.0001" value="0"/></div>
-    <div class="jcell5"><div class="jcell5">kaleidoscope video2</div></div>
-
-   
-    
+    <div class="jcontainer3">
+    <div class="jcell6"><video src="./starwarsbackround.webm" controls loop id="starwars"></video><video src="./darkkermit.webm" controls loop id="kermit"></video></div>
+    <div class="jcell5"><input type="range" id="hue-range" min="0" max="1" step="0.0001" value="0"/><p>Farbton</p>
+                        <p><input type="range" id="saturation-range" min="-1" max="1" step="0.0001" value="0"/><p>Sättigung</p></p>
+    </div>
+    <div class="jcell6"><canvas id="canvas" width="640" height="480"></canvas></div>
+    <div class="jcell5"><p><input type="range" id="opacity-range" min="0" max="1" step="0.0001" value="0.5"/><p>Crossfade</p></p>
+                        <p><input type="range" id="segment-range" min="0" max="20" step="1" value="0"/><p>Kaleidoscope</p></p>
+                        <p><input type="range" id="vignette-range" min="0" max="20" step="0.0001" value="1"/><p>Vignette</p></p>
+                        <p><input type="range" id="contrast-range" min="0" max="1" step="0.0001" value="1"/><p>Kontrast</p></p>
+                        <p><input type="range" id="brightness-range" min="0" max="1" step="0.0001" value="1"/><p>Helligkeit</p></p>
+                        <p><input type="range" id="highlight-range" min="0" max="1" step="0.0001" value="1"/><p>Highlight</p></p>
+                        <p><input type="range" id="shadow-range" min="0" max="1" step="0.0001" value="0"/><p>Schatten</p></p>
+                        <p><input type="range" id="tvglitch-range" min="0" max="1" step="0.0001" value="0"/><p>TVGlitch</p></p>
+    </div>
+    </div>
 
 
-    
+
+
+
 
 
 
@@ -154,13 +143,10 @@ video {
     <script src="./js/seriously.js"></script>
 	  <script src="./js/effects/seriously.vignette.js"></script>
 	  <script src="./js/effects/seriously.hue-saturation.js"></script>
+    <script src="./js/effects/seriously.split.js"></script>
     <script src="./js/effects/seriously.blend.js"></script>
     <script src="./js/effects/seriously.kaleidoscope.js"></script>
-    <script src="./js/effects/seriously.brightness-contrast.js"></script>
-    <script src="./js/effects/seriously.highlights-shadows.js"></script>
-    <script src="./js/effects/seriously.tvglitch.js"></script>
-    
-   
+
     <script>
       //main code goes here
       // declare our variables
@@ -170,11 +156,7 @@ var seriously, // the main object that holds the entire composition
   vignette,
   blend,
   hue_saturation,
-  brightness_contrast,
-  highlights_shadows,
-  tvglitch,
   kaleidoscope,
-  
 	target; // a wrapper object for our target canvas
 
 seriously = new Seriously();
@@ -197,32 +179,10 @@ hue_saturation.saturation = '#saturation-range';
 kaleidoscope = seriously.effect('kaleidoscope');
 kaleidoscope.segments = '#segment-range';
 
-brightness_contrast = seriously.effect('brightness-contrast');
-brightness_contrast.brightness = '#brightness-range';
-brightness_contrast.contrast = '#contrast-range';
-
-highlights_shadows = seriously.effect('highlights-shadows');//Darken highlights, lighten shadows
-highlights_shadows.highlights='#highlight-range';
-highlights_shadows.shadows='#shadow-range';
-
-tvglitch = seriously.effect('tvglitch');
-tvglitch.distortion = '#tvglitch-range';
-tvglitch.verticalSync = '#tvglitch-range';
-tvglitch.lineSync = '#tvglitch-range';
-tvglitch.scanlines = '#tvglitch-range';
-tvglitch.barsRate = '#tvglitch-range';
-tvglitch.frameShape = 1;
-tvglitch.frameLimit = 0.5;
-
-
-
 
 // connect sources
-tvglitch.source = brightness_contrast;
-highlights_shadows.source = tvglitch;
-brightness_contrast.source = kaleidoscope;
 kaleidoscope.source = kermit;
-hue_saturation.source = highlights_shadows;
+hue_saturation.source = kaleidoscope;
 blend.bottom=starwars;
 vignette.source = blend;
 blend.top=hue_saturation;
