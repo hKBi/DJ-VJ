@@ -6,6 +6,7 @@ var context;
 var bufferLoader;
 var CrossfadeSample = {playing:false, playing2:false};
 var VolumeSample = {};
+var useCrossfade = true;
 
 
 function init() {
