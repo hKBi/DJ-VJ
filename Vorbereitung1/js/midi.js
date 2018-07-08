@@ -60,20 +60,34 @@ function onMidiMessage(event) {
      case 64: CrossfadeSample.crossfade(event.data[2]);
   }
 */
-
+var x = 0;
   switch(event.data[1]){
 
-    case 48: vol1.value = event.data[2]; //console.log(~~event.data[2]);
-              CrossfadeSample.crossfade(vol1)
+    case 48: vol2.value = event.data[2]; //console.log(~~event.data[2]);
+              CrossfadeSample.changeVolume2(vol2)
               break;
 
-    case 49: vol2.value = event.data[2]; //console.log(~~event.data[2]);
-              CrossfadeSample.crossfade(vol2)
+    case 49: vol1.value = event.data[2]; //console.log(~~event.data[2]);
+              CrossfadeSample.changeVolume(vol1)
+              break;
+
+    case 50:  x = event.data[2]; //console.log(~~event.data[2]);
+              x = x/43
+              speed2.value = x;
+              CrossfadeSample.changeSpeed2(speed2)
+              //console.log(x);
+              break;
+
+    case 51:  x = event.data[2]; //console.log(~~event.data[2]);
+              x = x/43
+              speed1.value = x;
+              CrossfadeSample.changeSpeed1(speed1)
+              //console.log(x);
               break;
 
     case 64: cross.value = event.data[2]; //console.log(~~event.data[2]);
               CrossfadeSample.crossfade(cross);
-              break;              
+              break;
 
   };
 

@@ -113,7 +113,7 @@ video {
             </div>
       </div>
       <div class="jcell2">
-        <input id="vol2" type="range" class="vranger jvol2" min="0" max="123" value="100" oninput="CrossfadeSample.changeVolume2(this);" /></div>
+        <input id="vol2" type="range" class="vranger jvol2" min="0" max="127" value="100" oninput="CrossfadeSample.changeVolume2(this);" /></div>
       <div class="jcell2"><input id="cross" type="range"  class="jcross" min="0" max="127" value="50" oninput="CrossfadeSample.crossfade(this);"/></div>
       <div class="jcell2"><input id="vol1" type="range" class="vranger jvol1" min="0" max="127" value="100" oninput="CrossfadeSample.changeVolume(this);" /></div>
 
@@ -121,13 +121,13 @@ video {
 
     <div class="jcontainer2">
       <div class="jcell3">
-        <span>Volume 1 <input type="checkbox" onchange="CrossfadeSample.muteVolume1(this);"></span>
+        <span>Volume 1 <input type="checkbox" id="mvol1" onchange="CrossfadeSample.muteVolume1(this);"></span>
       </div>
       <div class="jcell3">
-        <span>Crossfade <input type="checkbox" onchange="CrossfadeSample.muteCrossfade(this);"></span>
+        <span>Crossfade <input type="checkbox" id="mcross" onchange="CrossfadeSample.muteCrossfade(this);"></span>
       </div>
       <div class="jcell3">
-        <span>Volume 2 <input type="checkbox" onchange="CrossfadeSample.muteVolume2(this);"></span>
+        <span>Volume 2 <input type="checkbox" id="mvol2" onchange="CrossfadeSample.muteVolume2(this);"></span>
       </div>
     </div>
 
