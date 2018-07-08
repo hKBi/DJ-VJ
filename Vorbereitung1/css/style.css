@@ -14,9 +14,6 @@ body {
 
 }
 .jcell {
-  /*width:25%;
-  position:relative;
-  float:left;*/
   margin: auto;
 }
 .jcell3 {
@@ -26,6 +23,7 @@ body {
   text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
 
 }
+
 .jcell4 {
   color: white;
   font-size: 1.5em;
@@ -42,7 +40,17 @@ body {
   /*padding-top: 80px;*/
   text-shadow: 0 0 10px #42d0ff, 0 0 5px darkblue;
 }
-
+.jcell6 {
+  grid-column: auto;
+  text-align: center;
+}
+.jcontainer3
+{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
 .jtext {
   position: absolute;
   width: inherit;
@@ -72,6 +80,7 @@ grid-template-columns: auto auto auto;
 grid-template-rows: 100px 100px;
 grid-gap: 50px;
 padding: 50px;
+padding-top: 150px;
 
 /*style="position:relative;float:left; padding-top:100px; width:100%"*/
 }
@@ -83,6 +92,7 @@ grid-template-rows: 100px 100px;
 grid-gap: 50px;
 padding: 0 50px;
 text-align: center;
+
 
 /*style="position:relative;float:left; padding-top:100px; width:100%"*/
 }
